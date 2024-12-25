@@ -1,0 +1,49 @@
+﻿@model Application.ViewModels.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="d-flex justify-content-center align-items-center">
+    <h2 class="mb-4">Register</h2>
+</div>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div class="form-row">
+    <div class="form-group col-md-6">
+        @Html.LabelFor(temp => temp.Username)
+        @Html.TextBoxFor(temp => temp.Username, new { placeholder = "Username", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Username)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(temp => temp.Password)
+        @Html.PasswordFor(temp => temp.Password, new { placeholder = "Password", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Password)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.Label("ConfirmPassword", "Confirm Password")
+        @Html.PasswordFor(temp => temp.ConfirmPassword, new { placeholder = "Confirm Password", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.ConfirmPassword)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(temp => temp.Email)
+        @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Email", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Email)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.Label("Mobile", "Mobile Number")
+        @Html.TextBoxFor(temp => temp.Mobile, new { placeholder = "Mobile Number", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Mobile)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.Label("ProfileImage", "Profile Image", new { @class = "control-label" })
+        <input type="file" id="ProfileImage" name="ProfileImage" class="form-control" />
+        @Html.ValidationMessageFor(temp => temp.ProfileImage, "", new { @class = "text-danger" })
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Register</button>
+</div>
+
+}
+

@@ -1,0 +1,38 @@
+﻿@model Application.Identity.ApplicationUser
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Profile</h2>
+<table class="table">
+    <tr>
+        <th>Profile Image</th>
+        <td>
+            @if (!string.IsNullOrEmpty(Model.ProfileImage))
+            {
+                <img src="data:image;base64,@Model.ProfileImage" alt="Profile Image" style="width: 100px; height: 70px;" />
+            }
+            else
+            {
+                <img src="~/Images/default-image.png" alt="Default Profile Image" style="width:100px; height:70px;" />
+            }
+        </td>
+    </tr>
+    <tr>
+        <th>Username</th>
+        <td>@Model.UserName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Mobile Number</th>
+        <td>@Model.PhoneNumber</td>
+    </tr>
+
+</table>
+
+<a href="/home/index">Back</a>
+

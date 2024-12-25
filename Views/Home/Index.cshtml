@@ -1,0 +1,58 @@
+﻿@model Application.Identity.ApplicationUser
+@{
+    ViewBag.Title = "Home";
+}
+
+@if (User.Identity.IsAuthenticated == false)
+{
+    <div class="d-flex justify-content-center align-items-center">
+        <h2 class="mb-4">Welcome to Home page</h2>
+    </div>
+}
+@if (User.Identity.IsAuthenticated == true)
+{
+    <div class="container mt-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h2>Welcome @User.Identity.Name</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                        {
+                            <img src="data:image;base64,@Model.ProfileImage" alt="Profile Image" class="img-fluid rounded-circle" style="width: 150px; height: 150px;" />
+                        }
+                        else
+                        {
+                            <img src="~/Images/default-image.png" alt="Default Profile Image" class="img-fluid rounded-circle" style="width: 150px; height: 150px;" />
+                        }
+                    </div>
+                    <div class="col-md-8">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="bg-light">Username</th>
+                                    <td>@Model.UserName</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="bg-light">Email</th>
+                                    <td>@Model.Email</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="bg-light">Mobile Number</th>
+                                    <td>@Model.PhoneNumber</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
